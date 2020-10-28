@@ -7,14 +7,26 @@ const componentForm = {
     administrative_area_level_1: "short_name",
     country: "long_name",
     postal_code: "short_name",
+    administrative_area_level_2: "long_name"
 };
 
 function initAutocomplete() {
     // Create the autocomplete object, restricting the search predictions to
     // geographical location types.
+    var defaultPlace = new google.maps.LatLng(39.1667, 35.6667);
+    var options =
+    {
+        location: defaultPlace,
+        radius: 20000,
+        types: ["geocode"],
+        componentRestrictions: {
+            country: 'tr'
+        }
+    };
+
     autocomplete = new google.maps.places.Autocomplete(
         document.getElementById("autocomplete"),
-        { types: ["geocode"] }
+        options
     );
     // Avoid paying for data that you don't need by restricting the set of
     // place fields that are returned to just the address components.
