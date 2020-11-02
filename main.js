@@ -39,6 +39,7 @@ function initAutocomplete() {
 function fillInAddress() {
     // Get the place details from the autocomplete object.
     const place = autocomplete.getPlace();
+	console.log(place);
 
     for (const component in componentForm) {
         document.getElementById(component).value = "";
@@ -59,18 +60,18 @@ function fillInAddress() {
 
 // Bias the autocomplete object to the user's geographical location,
 // as supplied by the browser's 'navigator.geolocation' object.
-function geolocate() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-            const geolocation = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude,
-            };
-            const circle = new google.maps.Circle({
-                center: geolocation,
-                radius: position.coords.accuracy,
-            });
-            autocomplete.setBounds(circle.getBounds());
-        });
-    }
-}
+// function geolocate() {
+    // if (navigator.geolocation) {
+        // navigator.geolocation.getCurrentPosition((position) => {
+            // const geolocation = {
+                // lat: position.coords.latitude,
+                // lng: position.coords.longitude,
+            // };
+            // const circle = new google.maps.Circle({
+                // center: geolocation,
+                // radius: position.coords.accuracy,
+            // });
+            // autocomplete.setBounds(circle.getBounds());
+        // });
+    // }
+// }
